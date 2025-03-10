@@ -1,40 +1,25 @@
 "use strict";
 const express = require("express");
-const nano = require("nano")("http://admin:admin@localhost:5984");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+const { initializeDatabases } = require("./config/db");
+const apiRoutes = require("./routes/api");
+
 const app = express();
-async function createDatabases() {
-  try {
-    await nano.db.create("users");
-    console.log("Database 'users' created.");
-  } catch (err) {
-    if (err.error === "file_exists") {
-      console.log("Database 'users' already exists.");
-    } else {
-      console.error("Error creating 'users' database:", err);
-    }
-  }
-  try {
-    await nano.db.create("channels");
-    console.log("Database 'channels' created.");
-  } catch (err) {
-    if (err.error === "file_exists") {
-      console.log("Database 'channels' already exists.");
-    } else {
-      console.error("Error creating 'channels' database:", err);
-    }
-  }
-  try {
-    await nano.db.create("messages");
-    console.log("Database 'messages' created.");
-  } catch (err) {
-    if (err.error === "file_exists") {
-      console.log("Database 'messages' already exists.");
-    } else {
-      console.error("Error creating 'messages' database:", err);
-    }
-  }
-}
-createDatabases();
-app.listen(8080, "localhost", () => {
-  console.log("Server listening on port 8080");
+
+// Middleware
+app.use(express.json());
+
+// Initialize databases
+initializeDatabases();
+
+// Routes
+app.use("/api", apiRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Start server
+const PORT = 8080;
+const HOST = "localhost";
+app.listen(PORT, HOST, () => {
+  console.log(`Server listening on http://${HOST}:${PORT}`);
 });
