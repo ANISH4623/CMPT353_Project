@@ -14,10 +14,12 @@ Project for my course CMPT 353
 ### Docker (packing all in the container to host server)
 [![## My Skills](https://skillicons.dev/icons?i=docker&theme=light)](https://skillicons.dev)
 
-## Packages Used and the Reason being used 
+## Packages Used 
 
 ### nano
-It's an Offical Apache CouchDB library for Node.js.
-There is a minimum  abstraction between Programmer  and CouchDB.
-Errors are proxied directly from CouchDB
+It's an Offical Apache CouchDB library for Node.js
+#### *Reason Behind usage of this package*
+- There is a minimum  abstraction between Programmer  and CouchDB makes easier to code 
+- Errors are proxied directly from CouchDB, which can be easier to debug the code relating to couch db\
+
 
