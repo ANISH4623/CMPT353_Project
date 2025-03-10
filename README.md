@@ -1,7 +1,7 @@
 # CMPT353_Project
 Project for my course CMPT 353 
 
-## Tech Stack 
+## Tech stack  :rocket:
 ### React (Frontend) 
 [![## My Skills](https://skillicons.dev/icons?i=react&theme=light)](https://skillicons.dev)
 
@@ -15,3 +15,9 @@ Project for my course CMPT 353
 [![## My Skills](https://skillicons.dev/icons?i=docker&theme=light)](https://skillicons.dev)
 
 ## Packages Used and the Reason being used 
+
+### nano
+It's an Offical Apache CouchDB library for Node.js.
+There is a minimum  abstraction between Programmer  and CouchDB.
+Errors are proxied directly from CouchDB
+
